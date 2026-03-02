@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us - Travel Recommendation</title>
+  <style>
+    body { margin:0; font-family: Arial, sans-serif; color:#222; }
+    .navbar { display:flex; align-items:center; justify-content:space-between; background:#036; color:#fff; padding:10px 16px; }
+    .nav-links a { color:#fff; text-decoration:none; margin:0 8px; }
+    .brand a { color:#fff; text-decoration:none; font-weight:bold; }
+    .container { max-width:760px; margin:28px auto; padding:0 16px; }
+    .card { background:#fff; padding:20px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.06); }
+    label { display:block; margin-top:12px; font-weight:600; }
+    input[type="text"], input[type="email"], textarea { width:100%; padding:10px; margin-top:6px; border:1px solid #dcdcdc; border-radius:6px; font-size:1rem; }
+    textarea { min-height:140px; resize:vertical; }
+    .actions { margin-top:14px; display:flex; gap:8px; }
+    .btn { padding:10px 14px; border-radius:6px; border:none; cursor:pointer; }
+    .btn-primary { background:#036; color:#fff; }
+    .btn-secondary { background:#f2f2f2; }
+    .notice { margin-top:12px; color:green; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="brand"><a href="travel_recommendation.html">Travel Recommendation</a></div>
+    <div class="nav-links">
+      <a href="travel_recommendation.html">Home</a>
+      <a href="about_us.html">About Us</a>
+      <a href="contact_us.html">Contact Us</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="card">
+      <h1>Contact Us</h1>
+      <p>If you have questions or feedback, send us a message and we'll get back to you.</p>
+
+      <form id="contactForm" action="#" method="post">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" placeholder="Your name" required />
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com" required />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Write your message here" required></textarea>
+
+        <div class="actions">
+          <button class="btn btn-primary" type="submit">Submit</button>
+          <button class="btn btn-secondary" type="reset">Reset</button>
+        </div>
+      </form>
+
+      <div id="formNotice" class="notice" role="status" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      if (!name || !email || !message) {
+        document.getElementById('formNotice').textContent = 'Please complete all fields.';
+        return;
+      }
+      // Placeholder behavior: show confirmation. Integrate backend as needed.
+      document.getElementById('formNotice').textContent = 'Thanks — your message has been submitted.';
+      this.reset();
+    });
+  </script>
+</body>
+</html>
